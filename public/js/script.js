@@ -10,17 +10,15 @@ button.addEventListener("click", (event) => {
   const location = search.value;
   messageTwo.textContent = "";
   messageOne.textContent = "Loading...";
-
-  fetch(`http://localhost:3000/weather?location=${location}`).then(
-    (response) => {
-      response.json().then((data) => {
-        if (data.error) {
-          messageOne.textContent = data.error;
-        } else {
-          messageOne.textContent = data.location;
-          messageTwo.textContent = data.forcast;
-        }
-      });
-    }
-  );
+  //`http://localhost:3000/weather?location
+  fetch(`/weather?location=${location}`).then((response) => {
+    response.json().then((data) => {
+      if (data.error) {
+        messageOne.textContent = data.error;
+      } else {
+        messageOne.textContent = data.location;
+        messageTwo.textContent = data.forcast;
+      }
+    });
+  });
 });
